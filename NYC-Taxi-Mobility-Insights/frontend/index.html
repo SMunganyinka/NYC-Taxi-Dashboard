@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYC Taxi Dashboard</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Optional: hide trip ID column if you want */
+    /* table th:first-child, table td:first-child { display: none; } */
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <h1>🚕 NYC Taxi Dashboard</h1>
+    <p>Explore NYC taxi trip patterns in NYC</p>
+  </header>
+
+  <!-- FILTERS -->
+  <section class="filters">
+    <label>
+      Min Distance (km):
+      <input type="number" id="minDistance" value="2" step="0.1" />
+    </label>
+
+    <label>
+      Max Distance (km):
+      <input type="number" id="maxDistance" value="10" step="0.1" />
+    </label>
+
+    <label>
+      Peak Hours:
+      <select id="peakHours">
+        <option value="">All</option>
+        <option value="morning">Morning Rush (Weekdays 8–11 AM)</option>
+        <option value="evening">Evening Rush (Weekdays 5–8 PM)</option>
+      </select>
+    </label>
+
+    <button id="applyFilters" class="btn-primary">Apply</button>
+    <button id="resetFilters" class="btn-secondary">Reset</button>
+  </section>
+
+  <!-- SUMMARY CARDS -->
+  <section class="summary">
+    <div class="card">
+      <h3>Total Trips</h3>
+      <p id="totalTrips">--</p>
+    </div>
+    <div class="card">
+      <h3>Average Duration</h3>
+      <p id="avgDuration">-- sec</p>
+    </div>
+    <div class="card">
+      <h3>Most Common Passenger Count</h3>
+      <p id="commonPassenger">--</p>
+    </div>
+  </section>
+
+  <!-- CHARTS -->
+  <section class="charts">
+    <div class="chart-container">
+      <h2>📆 Trips Over Time</h2>
+      <canvas id="tripsChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h2>⏰ Avg Trip Duration by Hour</h2>
+      <canvas id="durationChart"></canvas>
+    </div>
+  </section>
+
+  <!-- TOP TRIPS TABLE -->
+  <section class="top-trips">
+    <h2>🏆 Top 10 Trips</h2>
+    <label>
+      Sort By:
+      <select id="sortBy">
+        <option value="trip_distance_km">Distance (km)</option>
+        <option value="speed_kmph">Speed (km/h)</option>
+        <option value="trip_duration">Duration (sec)</option>
+      </select>
+    </label>
+    <table>
+      <thead>
+        <tr>
+          <th>Trip ID</th>
+          <th>Distance (km)</th>
+          <th>Speed (km/h)</th>
+          <th>Duration (sec)</th>
+          <th>Pickup Hour</th>
+          <th>Pickup Day</th>
+        </tr>
+      </thead>
+      <tbody id="topTripsBody"></tbody>
+    </table>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+     NYC Taxi Mobility Dashboard | &copy; 2025
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

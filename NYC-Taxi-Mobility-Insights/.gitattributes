@@ -1,0 +1,6 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+.git/lfs/objects/e8/61/e8618da20752c9fba6afa2df06f4c6894ede2ce9a1d816fa3125ff03a59d05de filter=lfs diff=lfs merge=lfs -text
+.git/lfs/objects/fc/8c/fc8c777a4ab99a362d8b6b6f2038ff8a2c4625b9593248a47352d0d26fa99927 filter=lfs diff=lfs merge=lfs -text
+.git/objects/92/768b8e7a5dea1ef0c172a15f4c6dc4709d446a filter=lfs diff=lfs merge=lfs -text
+data/cleaned_train.csv filter=lfs diff=lfs merge=lfs -text
+data/raw/train.csv filter=lfs diff=lfs merge=lfs -text
